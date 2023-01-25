@@ -25,17 +25,18 @@ class SalleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        public function store(PersonneRequest $request) {
-        // Ici les données ont été validées dans la classe PersonneRequest
-        $personne = new Personne();
-        $personne->nom = $request->nom;
-        $personne->prenom = $request->prenom;
-        $personne->age = $request->age;
-        $personne->save();
+        public function store(SalleRequest $request) {
+        // Ici les données ont été validées dans la classe SalleRequest
+        $salle = new Salle();
+        $salle->nom = $request->nom;
+        $salle->adresse = $request->adresse;
+        $salle->code_postal = $request->code_postal;
+        $salle->ville = $request->ville;
+        $salle->save();
         return response()->json([
             'status' => true,
-            'message' => "Personne Created successfully!",
-            'personne' => $personne
+            'message' => "Salle Created successfully!",
+            'salle' => $salle
             ], 200);
         }
     }
