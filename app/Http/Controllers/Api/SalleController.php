@@ -48,9 +48,11 @@ class SalleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $salle = Salle::findOrFail($id);
+        $salle->update($request->all());
+        return response()->json(['status' => true, 'message' => "Personne updated successfully!", 'salle' => $salle], 200);
+
     }
 
     /**
