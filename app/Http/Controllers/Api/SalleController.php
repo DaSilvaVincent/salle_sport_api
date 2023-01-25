@@ -24,8 +24,7 @@ class SalleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        public function store(SalleRequest $request) {
+    public function store(SalleRequest $request) {
         // Ici les données ont été validées dans la classe SalleRequest
         $salle = new Salle();
         $salle->nom = $request->nom;
@@ -38,8 +37,8 @@ class SalleController extends Controller
             'message' => "Salle Created successfully!",
             'salle' => $salle
             ], 200);
-        }
     }
+
 
     /**
      * Display the specified resource.
