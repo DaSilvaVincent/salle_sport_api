@@ -15,7 +15,8 @@ class SalleController extends Controller
      */
     public function index()
     {
-        //
+        $salles = Salle::all();
+        return SalleRessource::collection($salles);
     }
 
     /**
