@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Salle;
 use Illuminate\Http\Request;
 
 class SalleController extends Controller
@@ -34,9 +35,9 @@ class SalleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id) {
+        $salle = Salle::findOrFail($id);
+        return new SalleResource($salle);
     }
 
     /**
