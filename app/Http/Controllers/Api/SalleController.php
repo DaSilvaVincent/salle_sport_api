@@ -13,8 +13,7 @@ class SalleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $salles = Salle::all();
         return SalleRessource::collection($salles);
     }
@@ -25,9 +24,20 @@ class SalleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        public function store(PersonneRequest $request) {
+        // Ici les données ont été validées dans la classe PersonneRequest
+        $personne = new Personne();
+        $personne->nom = $request->nom;
+        $personne->prenom = $request->prenom;
+        $personne->age = $request->age;
+        $personne->save();
+        return response()->json([
+            'status' => true,
+            'message' => "Personne Created successfully!",
+            'personne' => $personne
+            ], 200);
+        }
     }
 
     /**
