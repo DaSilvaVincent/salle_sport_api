@@ -65,7 +65,7 @@ class SalleController extends Controller {
     public function destroy($id) {
         try {
             $salle = Salle::findOrFail($id);
-            $salle->destroy();
+            $salle->destroy($id);
             return response()->json(['status' => true, 'message' => "Salle delete successfully!",]);
         } catch (\Exception $e) {
             return response()->json(['message' => "Salle not found!"], 404);
