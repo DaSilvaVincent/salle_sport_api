@@ -23,7 +23,8 @@ class SalleRequest extends FormRequest
      */
     public function rules() {
         return ['nom' => "required|string|between:5,50",
-            'prenom' => "required|string|between:5,50",
-            'age' => "numeric|between:18,65"];
+            'adresse' => "required|string|between:5,50",
+            'code_postal' => "required|string|between:1,5",
+            'ville' => "required|string|between:5,50"];
     }
 }
