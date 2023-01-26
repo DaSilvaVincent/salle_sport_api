@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SalleRessource;
 use App\Models\Salle;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,6 @@ class SalleController extends Controller {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index() {
         $salles = Salle::all();
@@ -22,7 +22,6 @@ class SalleController extends Controller {
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(SalleRequest $request) {
         // Ici les données ont été validées dans la classe SalleRequest
@@ -39,11 +38,10 @@ class SalleController extends Controller {
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id) {
         $salle = Salle::findOrFail($id);
-        return new SalleResource($salle);
+        return new SalleRessource($salle);
     }
 
     /**
@@ -51,7 +49,6 @@ class SalleController extends Controller {
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
         $salle = Salle::findOrFail($id);
@@ -63,7 +60,6 @@ class SalleController extends Controller {
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
         $salle = Salle::findOrFail($id);
