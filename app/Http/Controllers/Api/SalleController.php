@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Salle;
 use Illuminate\Http\Request;
 
-class SalleController extends Controller
-{
+class SalleController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
@@ -32,13 +32,8 @@ class SalleController extends Controller
         $salle->code_postal = $request->code_postal;
         $salle->ville = $request->ville;
         $salle->save();
-        return response()->json([
-            'status' => true,
-            'message' => "Salle Created successfully!",
-            'salle' => $salle
-            ], 200);
+        return response()->json(['status' => true, 'message' => "Salle created successfully!", 'salle' => $salle], 200);
     }
-
 
     /**
      * Display the specified resource.
@@ -61,8 +56,7 @@ class SalleController extends Controller
     public function update(Request $request, $id) {
         $salle = Salle::findOrFail($id);
         $salle->update($request->all());
-        return response()->json(['status' => true, 'message' => "Personne updated successfully!", 'salle' => $salle], 200);
-
+        return response()->json(['status' => true, 'message' => "Salle updated successfully!", 'salle' => $salle], 200);
     }
 
     /**
@@ -71,8 +65,9 @@ class SalleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        $salle = Salle::findOrFail($id);
+        $salle->destroy();
+        return response()->json(['status' => true, 'message' => "Salle delete successfully!"], 200);
     }
 }
