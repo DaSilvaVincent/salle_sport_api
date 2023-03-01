@@ -20,6 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('salles', SalleController::class)->middleware(['auth', 'role:admin']);
+#Route::apiResource('salles', SalleController::class);
+
 
 Route::controller(\App\Http\Controllers\Api\AuthController::class)->group(function(){
     Route::post('login','login');
