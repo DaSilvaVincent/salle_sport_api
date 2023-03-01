@@ -1,1 +1,28 @@
 openapi: 3.0.0
+paths:
+  /api/salles:
+    get:
+      operationId: 35244593fe1416dc8a0dc75a79b805d2
+      responses:
+        '200':
+          description: 'Obtenir toutes les données de la BD'
+    post:
+      operationId: 82637c5df81c10c4d929598c93e8ea72
+      responses:
+        '200':
+          description: 'Ajoute une nouvelle salle dans la BD'
+  /api/salles/id:
+    get:
+      operationId: 5bc0d4d4c3e69d7921d3b5eb25428a25
+      responses:
+        '200':
+          description: "Affiche une salle définie par l'id"
+    put:
+      operationId: ffd7d537131b58e0461fc5519497b877
+      responses:
+        '200':
+          description: "Met a jour la salle définie par l'id"
+components:
+  responses:
+    '200':
+      description: "Supprime la salle définie par l'id"
