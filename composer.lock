@@ -6155,6 +6155,7 @@
         },
         {
             "name": "symfony/yaml",
+<<<<<<< HEAD
             "version": "v6.2.7",
             "source": {
                 "type": "git",
@@ -6165,6 +6166,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/yaml/zipball/e8e6a1d59e050525f27a1f530aa9703423cb7f57",
                 "reference": "e8e6a1d59e050525f27a1f530aa9703423cb7f57",
+=======
+            "version": "v6.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "2bbfbdacc8a15574f8440c4838ce0d7bb6c86b19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/2bbfbdacc8a15574f8440c4838ce0d7bb6c86b19",
+                "reference": "2bbfbdacc8a15574f8440c4838ce0d7bb6c86b19",
+>>>>>>> 70dea171b5817a9e9052c3a9cc7d60396d1bdae4
                 "shasum": ""
             },
             "require": {
@@ -6209,7 +6222,11 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/yaml/tree/v6.2.7"
+=======
+                "source": "https://github.com/symfony/yaml/tree/v6.2.5"
+>>>>>>> 70dea171b5817a9e9052c3a9cc7d60396d1bdae4
             },
             "funding": [
                 {
@@ -6225,7 +6242,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2023-02-16T09:57:23+00:00"
+=======
+            "time": "2023-01-10T18:53:53+00:00"
+>>>>>>> 70dea171b5817a9e9052c3a9cc7d60396d1bdae4
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
