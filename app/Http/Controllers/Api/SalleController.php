@@ -7,12 +7,26 @@ use App\Http\Requests\SalleRequest;
 use App\Http\Resources\SalleRessource;
 use App\Models\Salle;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
+
+/**
+ * @OA\Info(
+ *     title="My First API",
+ *     version="0.1"
+ * )
+ */
+class OpenApi{}
 
 class SalleController extends Controller {
 
     /**
-     * Display a listing of the resource.
-     *
+     * @OA\Get(
+     *     path="/api/salles",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Obtenir toutes les données de la BD"
+     *     )
+     * )
      */
     public function index() {
         $salles = Salle::all();
@@ -20,9 +34,13 @@ class SalleController extends Controller {
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @OA\Post(
+     *     path="/api/salles",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Ajoute une nouvelle salle dans la BD"
+     *     )
+     * )
      */
     public function store(SalleRequest $request) {
         // Ici les données ont été validées dans la classe SalleRequest
@@ -36,9 +54,13 @@ class SalleController extends Controller {
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
+     * @OA\Get(
+     *     path="/api/salles/id",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Affiche une salle définie par l'id"
+     *     )
+     * )
      */
     public function show($id) {
         $salle = Salle::findOrFail($id);
@@ -51,6 +73,15 @@ class SalleController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      */
+    /**
+     * @OA\Put(
+     *     path="/api/salles/id",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Met a jour la salle définie par l'id"
+     *     )
+     * )
+     */
     public function update(Request $request, $id) {
         $salle = Salle::findOrFail($id);
         $salle->update($request->all());
@@ -61,6 +92,15 @@ class SalleController extends Controller {
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     */
+    /**
+     * @OA\Del(
+     *     path="/api/salles/id",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Supprime la salle définie par l'id"
+     *     )
+     * )
      */
     public function destroy($id) {
         try {
