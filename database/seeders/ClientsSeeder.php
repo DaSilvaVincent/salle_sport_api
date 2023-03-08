@@ -13,7 +13,7 @@ class ClientsSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        Client::factory([
+        Client::factory()->create([
             'nom' => "nomClientUn",
             'prenom' => "prenomClientUn",
             'adresse' => "sonAdresse",
@@ -22,7 +22,7 @@ class ClientsSeeder extends Seeder {
             'validite' => true,
             'id_user' => 1,
         ]);
-        Client::factory([
+        Client::factory()->create([
             'nom' => "nomClientDeux",
             'prenom' => "prenomClientDeux",
             'adresse' => "sonAdresse",
@@ -31,7 +31,7 @@ class ClientsSeeder extends Seeder {
             'validite' => true,
             'id_user' => 2,
         ]);
-        Client::factory([
+        Client::factory()->create([
             'nom' => "nomClientTrois",
             'prenom' => "prenomClientTrois",
             'adresse' => "sonAdresse",
@@ -40,7 +40,7 @@ class ClientsSeeder extends Seeder {
             'validite' => true,
             'id_user' => 3,
         ]);
-        Client::factory([
+        Client::factory()->create([
             'nom' => "nomClientQuatre",
             'prenom' => "prenomClientQuatre",
             'adresse' => "sonAdresse",
@@ -49,7 +49,7 @@ class ClientsSeeder extends Seeder {
             'validite' => true,
             'id_user' => 4,
         ]);
-        Client::factory([
+        Client::factory()->create([
             'nom' => "nomClientCinq",
             'prenom' => "prenomClientCinq",
             'adresse' => "sonAdresse",
@@ -57,6 +57,24 @@ class ClientsSeeder extends Seeder {
             'ville' => "saVille",
             'validite' => true,
             'id_user' => 5,
+        ]);
+        Client::factory()->create([
+            'nom' => "nomClientSix",
+            'prenom' => "prenomClientSix",
+            'adresse' => "sonAdresse",
+            'code_postal' => "sonCodePostal",
+            'ville' => "saVille",
+            'validite' => true,
+            'id_user' => 6,
+        ]);
+        Client::factory()->create([
+            'nom' => "nomClientSept",
+            'prenom' => "prenomClientSept",
+            'adresse' => "sonAdresse",
+            'code_postal' => "sonCodePostal",
+            'ville' => "saVille",
+            'validite' => true,
+            'id_user' => 7,
         ]);
         Client::factory(40)->create();
     }
