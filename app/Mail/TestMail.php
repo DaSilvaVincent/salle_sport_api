@@ -2,8 +2,6 @@
 
 namespace App\Mail;
 
-// use ...
-
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
@@ -16,30 +14,18 @@ use Illuminate\Support\Facades\Log;
 class TestMail extends Mailable {
     use Queueable, SerializesModels;
 
-    public $details;
-    public $filename;
-
-    public function __construct($details, $filename) {
+    public function __construct() {
         Log::info("Prepare message");
-        $this->details = $details;
-        $this->filename = $filename;
     }
 
     public function envelope() {
-        return new Envelope(
-            from: new Address('Admin@appli.com', 'Gerard Martin'),
-            subject: 'Liste des personnes', );
+        return new Envelope(subject: 'Welcome mail',);
     }
 
     public function content() {
         return new Content(
-            view: 'clients.test',
+            view: 'emails.welcome',
         );
     }
 
-    public function attachments() {
-        return [
-            Attachment::fromStorageDisk('public', $this->filename),
-        ];
-    }
 }
