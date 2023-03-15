@@ -7,14 +7,36 @@ use App\Http\Requests\ClientRequest;
 use App\Http\Resources\ClientRessource;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
-class ClientControleur extends Controller
+
+class OpenApi{}
+
+class ClientController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/clients",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Obtenir toutes les données de la BD"
+     *     )
+     * )
+     */
     public function index() {
         $clients = Client::all();
         return ClientRessource::collection($clients);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/clients",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Ajoute un nouveau client dans la BD"
+     *     )
+     * )
+     */
     public function store(ClientRequest $request)
     {
         $client = new Client();
@@ -27,12 +49,30 @@ class ClientControleur extends Controller
         return response()->json(['status' => true, 'message' => "Client created successfully!", 'client' => $client], 200);
     }
 
+    /**
+     * @OA\Put(
+     *     path="/api/clients/id",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Met a jour le client définie par l'id"
+     *     )
+     * )
+     */
     public function update(Request $request, $id) {
         $client = Client::findOrFail($id);
         $client->update($request->all());
         return response()->json(['status' => true, 'message' => "Client updated successfully!", 'client' => $client], 200);
     }
 
+    /**
+     * @OA\Del(
+     *     path="/api/clients/id",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Supprime le client définie par l'id"
+     *     )
+     * )
+     */
     public function destroy($id) {
         try {
             $client = Client::findOrFail($id);

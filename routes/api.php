@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\SalleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('salles', SalleController::class)->middleware(['auth', 'role:admin']);
 #Route::apiResource('salles', SalleController::class);
 
+Route::apiResource('clients', ClientController::class)->middleware(['auth', 'role:admin']);
+#Route::apiResource('clients', ClientController::class);
 
 Route::controller(\App\Http\Controllers\Api\AuthController::class)->group(function(){
     Route::post('login','login');
