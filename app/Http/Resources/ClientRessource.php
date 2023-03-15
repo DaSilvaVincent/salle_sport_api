@@ -17,6 +17,8 @@ class ClientRessource extends JsonResource
             'nom' => $this->nom,
             'prenom' => $this->prenom,
             'adresse' => $this->adresse,
-            'code_postal_ville' => sprintf("%s %s",$this->code_postal, $this->ville)];
+            'code_postal_ville' => sprintf("%s %s",$this->code_postal, $this->ville),
+            'validite' => $this->validite,
+            'id_user' => $this->id_user];
     }
 }

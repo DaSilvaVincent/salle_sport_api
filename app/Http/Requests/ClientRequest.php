@@ -26,6 +26,8 @@ class ClientRequest extends FormRequest
             'prenom' => "required|string|between:5,50",
             'adresse' => "required|string|between:5,50",
             'code_postal' => "required|string|between:1,5",
-            'ville' => "required|string|between:5,50"];
+            'ville' => "required|string|between:5,50",
+            'validite' => "required|boolean",
+            'id_user' => "required|integer"];
     }
 }

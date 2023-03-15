@@ -45,6 +45,7 @@ class ClientController extends Controller
         $client->adresse = $request->adresse;
         $client->code_postal = $request->code_postal;
         $client->ville = $request->ville;
+        $client->validite = $request->validite;
         $client->save();
         return response()->json(['status' => true, 'message' => "Client created successfully!", 'client' => $client], 200);
     }
@@ -78,6 +79,7 @@ class ClientController extends Controller
             $client = Client::findOrFail($id);
             $client->validite = false;
             return response()->json(['status' => true, 'message' => "Client delete successfully!",]);
+
         } catch (\Exception $e) {
             return response()->json(['message' => "Client not found!"], 404);
         }

@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $adresse
  * @property string $code_postal
  * @property string $ville
+ * @property boolean $validite
+ * @property int $id_user
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereAdresse($value)
@@ -36,7 +38,7 @@ class Client extends Model {
     use HasFactory;
     public $timestamps = false;
 
-    protected $fillable = ['nom', 'prenom', 'adresse', 'code_postal', 'ville'];
+    protected $fillable = ['nom', 'prenom', 'adresse', 'code_postal', 'ville','validite','id_user'];
 
     public function reservations() {
         return $this->hasMany(Reservation::class);
