@@ -17,3 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::view('/swagger','swagger');
+
+Route::get("message", "MessageController@formMessageGoogle");
+Route::post("message", "MessageController@sendMessageGoogle")->name('send.message.google');
