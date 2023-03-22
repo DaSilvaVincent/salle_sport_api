@@ -22,12 +22,25 @@ class ClientRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules() {
-        return ['nom' => "required|string|between:5,50",
-            'prenom' => "required|string|between:5,50",
-            'adresse' => "required|string|between:5,50",
-            'code_postal' => "required|string|between:1,5",
-            'ville' => "required|string|between:5,50",
-            'validite' => "required|boolean",
-            'id_user' => "required|integer"];
+        if ($this->routeIs('register')) {
+            return [
+                'nom' => 'required|string|between:5,50',
+                'prenom' => 'required|string|between:5,50',
+                'adresse' => 'required|string|max:255',
+                'code_postal' => 'required|string|max:10',
+                'ville' => 'required|string|max:10',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6',
+            ];
+        }else {
+            return [
+                'nom' => 'required|string|between:5,50',
+                'prenom' => 'required|string|between:5,50',
+                'adresse' => 'required|string|max:255',
+                'code_postal' => 'required|string|max:10',
+                'ville' => 'required|string|max:10',
+            ];
+        }
     }
+
 }
