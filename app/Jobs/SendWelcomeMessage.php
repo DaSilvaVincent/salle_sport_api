@@ -2,7 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Mail\TestMail;
+use App\Mail\WelcomeMail;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -12,17 +13,21 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SendWelcomeMessage implements ShouldQueue {
-
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    private $user;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(){
-        Log::info("Send welcome");
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+        Log::info("Send Welcome Message");
     }
+
 
     /**
      * Execute the job.
@@ -30,11 +35,7 @@ class SendWelcomeMessage implements ShouldQueue {
      * @return void
      */
     public function handle() {
-        // Transmission d'un mail contenant le fichier calculé
-        Mail::to("robert.duchmol@domain.fr")
-        ->send(new TestMail());
+        Mail::to($this->user->email)->send(new WelcomeMail($this->user));
     }
-
 }
-#mhsendmail
 

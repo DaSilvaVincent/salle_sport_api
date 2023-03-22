@@ -30,8 +30,8 @@ class AuthController extends Controller {
                 'message' => 'Unauthorized',
             ], 401);
         }
-        SendWelcomeMessage::dispatch();
         $user = Auth::user();
+        SendWelcomeMessage::dispatch($user);
         return response()->json([
             'status' => 'success',
             'user' => $user,

@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Test Mail Laravel</title>
 </head>
-<body style="background: #e5e5e5; padding: 30px;" >
-
-<div style="max-width: 320px; margin: 0 auto; padding: 20px; background: #fff;">
-    <h3>Message de bienvenu :</h3>
-    <div>Merci de vous etre inscrit</div>
-</div>
-
+<body>
+    <h1>Mail Laravel</h1>
+    <h1>Bienvenue {{$user->name}}</h1>
+    <p>Merci</p>
 </body>
 </html>
+
