@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClientRequest;
 use App\Http\Resources\ClientRessource;
+use App\Jobs\ExportClientListByMessage;
 use App\Models\Client;
+use Barryvdh\DomPDF\PDF;
+use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use OpenApi\Annotations as OA;
 
@@ -24,9 +28,14 @@ class ClientController extends Controller
      *     )
      * )
      */
-    public function index() {
+    public function index(Request $request) {
+        if (strtolower($request->query('format')) === "pdf"){
+            ExportClientListByMessage::dispatch(Auth::user(), strtolower($request));
+            return Response()->noContent();
+        }
         $clients = Client::all();
         return ClientRessource::collection($clients);
+
     }
 
     /**
