@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\Model;
 class Activite extends Model {
     use HasFactory;
     public $timestamps = false;
+    protected $casts = [
+        'disponibilites' => 'array'
+    ];
 
     public function salle() {
         return $this->belongsTo(Salle::class);

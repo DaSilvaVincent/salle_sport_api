@@ -19,6 +19,8 @@ return new class extends Migration {
                 ->onDelete('cascade');
             $table->string('sport', 50);
             $table->string('localisation', 50);
+            $table->json('disponibilites')->nullable(true)->default(null);
+            $table->integer('cout');
         });
     }
 

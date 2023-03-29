@@ -20,6 +20,8 @@ class ActiviteFactory extends Factory {
         return [
             'sport' => $this->faker->  randomElement(self::SPORT),
             'localisation' => sprintf("Espace-%d", $this->faker-> numberBetween(1,5)),
+            'disponibilites' => [],
+            'cout' => $this->faker->numberBetween(10,100)
         ];
     }
 }
