@@ -30,7 +30,7 @@ class ClientController extends Controller
      */
     public function index(Request $request) {
         if (strtolower($request->query('format')) === "pdf"){
-            ExportClientListByMessage::dispatch(Auth::user(), strtolower($request));
+            ExportClientListByMessage::dispatch(Auth::user(), strtolower($request->query('format')));
             return Response()->noContent();
         }
         $clients = Client::all();

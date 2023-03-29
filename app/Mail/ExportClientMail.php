@@ -3,40 +3,65 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Attachment;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 
-class ExportClientMail extends Mailable {
+class ExportClientMail extends Mailable
+{
     use Queueable, SerializesModels;
-
-    public $details;
+    public $title;
     public $filename;
 
-    public function __construct($details, $filename) {
-        Log::info("Prepare message");
-        $this->details = $details;
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct($title, $filename) {
+        $this->title = $title;
         $this->filename = $filename;
     }
 
-    public function envelope() {
+    /**
+     * Get the message envelope.
+     *
+     * @return \Illuminate\Mail\Mailables\Envelope
+     */
+    public function envelope()
+    {
         return new Envelope(
-            from: new Address('Admin@appli.com', 'Gerard Martin'),
-            subject: 'Liste des personnes', );
+            from: new Address('Admin@activite-sport.com', 'Gerard Martin'),
+            subject: 'Export Clients Mail',
+        );;
     }
 
-    public function content() {
+    /**
+     * Get the message content definition.
+     *
+     * @return \Illuminate\Mail\Mailables\Content
+     */
+    public function content()
+    {
         return new Content(
-            view: 'emails.exportClient',
+            view: 'clients.exportClient',
         );
     }
 
-    public function attachments() {
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array
+     */
+    public function attachments()
+    {
         return [
-            Attachment::fromStorageDisk('public', $this->filename),];
+            Attachment::fromStorageDisk('public', $this->filename),
+        ];
     }
 }
+
