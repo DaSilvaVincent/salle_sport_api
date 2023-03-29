@@ -18,7 +18,11 @@ return new class extends Migration {
             $table->string('adresse');
             $table->string('code_postal', 6);
             $table->string('ville', 50);
-            $table->timestamps();
+            $table->boolean('validite');
+            $table->foreignIdFor(\App\Models\User::class, 'id_user')
+                ->OnUpdate('cascade')
+                ->OnDelete('cascade')
+                ->nullable(true);
         });
     }
 

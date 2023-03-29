@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendWelcomeMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller {
 
@@ -28,8 +30,8 @@ class AuthController extends Controller {
                 'message' => 'Unauthorized',
             ], 401);
         }
-
         $user = Auth::user();
+        SendWelcomeMessage::dispatch($user);
         return response()->json([
             'status' => 'success',
             'user' => $user,

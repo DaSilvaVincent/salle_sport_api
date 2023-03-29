@@ -25,6 +25,34 @@ class UserSeeder extends Seeder
             'password' => Hash::make('GrosSecret'),
             'remember_token' => Str::random(10),
         ])->create();
+        User::factory([
+            'name' => "Vincent DaSilva",
+            'email' => "vincent.silva@domain.fr",
+            'email_verified_at' => now(),
+            'password' => Hash::make('EnormeSecret'),
+            'remember_token' => Str::random(10),
+        ])->create();
+        User::factory([
+            'name' => "Thimo Lepetz",
+            'email' => "thimo.lepetz@domain.fr",
+            'email_verified_at' => now(),
+            'password' => Hash::make('Secret'),
+            'remember_token' => Str::random(10),
+        ])->create();
+        User::factory([
+            'name' => "Thomas Hanart",
+            'email' => "thomas.hanart@domain.fr",
+            'email_verified_at' => now(),
+            'password' => Hash::make('MonSecret'),
+            'remember_token' => Str::random(10),
+        ])->create();
+        User::factory([
+            'name' => "Arnaud Fievet",
+            'email' => "arnaud.fievet@domain.fr",
+            'email_verified_at' => now(),
+            'password' => Hash::make('UnSecret'),
+            'remember_token' => Str::random(10),
+        ])->create();
         User::factory(5)->create();
 
     }

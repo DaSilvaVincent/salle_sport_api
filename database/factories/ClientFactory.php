@@ -20,6 +20,8 @@ class ClientFactory extends Factory {
             'adresse' => $this->faker->streetAddress(),
             'code_postal' => $this->faker->postcode(),
             'ville' => $this->faker->city(),
+            'validite' => true,
+            'id_user' => $this->faker->numberBetween(0,10)
         ];
     }
 }

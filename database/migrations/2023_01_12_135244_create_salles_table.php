@@ -20,12 +20,6 @@ return new class extends Migration
             $table->string('code_postal', 6);
             $table->string('ville', 50);
         });
-        Schema::table('salles', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\User::class)
-                ->onUpdate('cascade')
-                ->onDelete('cascade')
-                ->nullable(true);
-        });
     }
 
     /**
