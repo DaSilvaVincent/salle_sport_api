@@ -28,10 +28,15 @@ class SalleController extends Controller {
      *     )
      * )
      */
-    public function index() {
-        $salles = Salle::all();
+    public function index(Request $request) {
+        $full = $request->get('full', false);
+        if ($full)
+            $salles = Salle::with('activites')->get();
+        else
+            $salles = Salle::all();
         return SalleRessource::collection($salles);
     }
+
 
     /**
      * @OA\Post(
