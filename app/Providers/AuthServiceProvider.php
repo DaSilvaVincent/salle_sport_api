@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('update-client', function (User $user, Client $client) {
-            return $user->roles()->where('nom', 'admin')->exists() || $user->id === $client->user_id;
+            return $user->roles()->where('nom', 'admin')->exists() || $user->id === $client->id_user;
         });
     }
 }
